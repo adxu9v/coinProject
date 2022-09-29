@@ -47,7 +47,7 @@ function App() {
           <li>시가총액</li>
         </ul>
       </li>
-      {/* 코인 리스트 */}
+      {/* 코인 리스트, 클릭 시 해당 코인의 시세정보가 담긴 모달창 출력 */}
      {filteredCoins.map((coins,i)=>{
        return <li className='coinListBox'
        onClick={ () => {
@@ -55,7 +55,7 @@ function App() {
          SetcoinClick(coins)
          }} key={i}>
       <ul className='coins'>
-        <li><img src={filteredCoins[i].image} alt="" /></li>
+        <li><img src={filteredCoins[i].image} alt={filteredCoins[i].image} /></li>
         {/* 이름 */}
          <li> {filteredCoins[i].name}</li>
          {/* 실시간 시세, 1개 기준 */}
@@ -88,7 +88,7 @@ function Modal ({Setmodal,coinClick,lang}){
    <div className='modalContent'>
    <h2 className='modalId'>{coinClick.id.toUpperCase()}</h2>
    <div className='modalContentBox'>
-   <img src={coinClick.image} alt="" className='modalImage'/>
+   <img src={coinClick.image} alt={coinClick.image} className='modalImage'/>
      <h5 className='modalName'>{coinClick.name}</h5> /
      <p>{coinClick.symbol}</p>
      <p className='modalCurrentPrice'>$ {coinClick.current_price}</p>
